@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>APP del año</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    body {
+      font-family: 'Press Start 2P', cursive;
+      background-color: #000014;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #00ffcc;
+    }
+
+    .container {
+      background: #111122;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #00ffcc88;
+      text-align: center;
+      border: 3px solid #00ffff33;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      font-size: 24px;
+      color: #00ffff;
+      text-shadow: 0 0 5px #00ffff;
+    }
+
+    .dropdown-container {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .listbutton {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      border-radius: 12px;
+      border: 2px solid #00ffcc;
+      background-color: #001f33;
+      color: #00ffcc;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffff33;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      background-color: #002a40;
+      border: 1px solid #00ffff44;
+      border-radius: 8px;
+      width: 100%;
+      z-index: 10;
+      margin-top: 5px;
+    }
+
+    .dropdown div {
+      padding: 10px;
+      cursor: pointer;
+      color: #00ffcc;
+    }
+
+    .dropdown div:hover {
+      background-color: #003f5e;
+    }
+
+    .button-group {
+      margin-top: 30px;
+    }
+
+    .button-group button {
+      background-color: #003f5e;
+      color: #00ffcc;
+      border: 2px solid #00ffff;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #00ffff66;
+    }
+
+    .button-group button:hover {
+      background-color: #005577;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00ffffaa;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>🎮 Videojuegos Web 🎮</h2>
+
+    <div class="dropdown-container">
+      <button id="nameButton" class="listbutton" onclick="toggleDropdown('nameMenu')">🧑‍ Elegir Nombre</button>
+      <div id="nameMenu" class="dropdown">
+        <div onclick="selectName('Omar Enriquez')">Omar Enriquez</div>
+        <div onclick="selectName('Diego Contreras')">Diego Contreras</div>
+        <div onclick="selectName('Rodrigo')">Rodrigo</div>
+        <div onclick="selectName('Ana León')">Ana León</div>
+        <div onclick="selectName('Andrés Medina')">Andrés Medina</div>
+        <div onclick="selectName('Fatima Méndez')">Fatima Méndez</div>
+        <div onclick="selectName('Diego Pérez')">Diego Pérez</div>
+        <div onclick="selectName('Dayana Álvarez')">Dayana Álvarez</div>
+        <div onclick="selectName('Celeste')">Celeste</div>
+      </div>
+    </div>
+
+    <div class="dropdown-container">
+      <input type="password" id="passwordInput" class="listbutton" placeholder="🔒 Ingresar contraseña">
+    </div>
+
+    <div class="button-group">
+      <button onclick="registerEntry()">🎮 Iniciar Sesión</button>
+    </div>
+  </div>
+
+  <script>
+    let selectedName = "";
+
+    function toggleDropdown(menuId) {
+      const menu = document.getElementById(menuId);
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function selectName(name) {
+      selectedName = name;
+      document.getElementById("nameMenu").style.display = "none";
+      document.getElementById("nameButton").innerText = name;
+    }
+
+    function registerEntry() {
+      const password = document.getElementById("passwordInput").value;
+
+      if (!selectedName) {
+        alert("Por favor selecciona tu nombre 🌟");
+        return;
+      }
+
+      if (!password) {
+        alert("Por favor ingresa tu contraseña 🔐");
+        return;
+      }
+
+      // Lista de usuarios válidos
+      const users = {
+        "Omar Enriquez": "omar125@100",
+        "Diego Contreras": "diego140@115",
+        "Rodrigo": "rodrigo150@125",
+        "Ana León": "ana155@130",
+        "Andrés Medina": "andres160@135",
+        "Fatima Méndez": "fatima160@140",
+        "Diego Pérez": "diego165@145",
+        "Dayana Álvarez": "dayana170@150",
+        "Celeste": "celeste175@155"
+      };
+
+  if (users[selectedName] === password) {
+    alert(`¡Bienvenido/a ${selectedName}! 🚀\nInicio de sesión exitoso ✅`);
+    // Redirigir a otra página
+    window.location.href = "EXAMEN FINAL DE DIPLOMADO UNIDAD 2 15-05-2025.htm"; // cambia esto por el nombre real del archivo HTML al que deseas redirigir
+  } else {
+    alert("Usuario o contraseña incorrecta ❌");
+  }
+}
+  </script>
+</body>
+</html>
+
